@@ -1,0 +1,41 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Task {
+  id: String!
+  phaseNumber: Float!
+  taskNumber: Float!
+  taskTitle: String!
+  isCompleted: Boolean!
+  phase: Phase!
+}
+
+type Phase {
+  id: String!
+  phaseNumber: Float!
+  phaseTitle: String!
+  tasks: [Task!]!
+}
+
+type Query {
+  phases: [Phase!]!
+  phase(id: Int!): Phase!
+  tasks: [Task!]!
+  task(id: Int!): Task!
+}
+
+type Mutation {
+  createPhase(createPhaseInput: CreatePhase!): Phase!
+  createTask(createTaskInput: CreateTask!): Task!
+  completeTask(id: String!): Task!
+}
+
+input CreatePhase {
+  phaseTitle: String!
+}
+
+input CreateTask {
+  phaseNumber: Float!
+  taskTitle: String!
+}
